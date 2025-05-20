@@ -523,6 +523,69 @@ app.get('/region',async(req,res)=>{
     }
 });
 
+app.get('/tolemp',async(req,res)=>{
+    try{
+        const result = await pool.query('select count(employee_id) from employees');
+        res.json(result.rows);
+    }catch{
+           res.status(500).json({Error:err.message});
+    }
+});
+
+app.get('/tolreg',async(req,res)=>{
+    try{
+        const result = await pool.query('select count(region_id) from regions');
+        res.json(result.rows);
+    }catch{
+           res.status(500).json({Error:err.message});
+    }
+});
+
+app.get('/tolcountry',async(req,res)=>{
+    try{
+        const result = await pool.query('select count(country_id) from countries');
+        res.json(result.rows);
+    }catch{
+           res.status(500).json({Error:err.message});
+    }
+});
+
+app.get('/toldep',async(req,res)=>{
+    try{
+        const result = await pool.query('select count(department_id) from departments');
+        res.json(result.rows);
+    }catch{
+           res.status(500).json({Error:err.message});
+    }
+});
+
+app.get('/toljob',async(req,res)=>{
+    try{
+        const result = await pool.query('select count(job_id) from jobs');
+        res.json(result.rows);
+    }catch{
+           res.status(500).json({Error:err.message});
+    }
+});
+
+app.get('/tollocation',async(req,res)=>{
+    try{
+        const result = await pool.query('select count(location_id) from locations');
+        res.json(result.rows);
+    }catch{
+           res.status(500).json({Error:err.message});
+    }
+});
+
+app.get('/toljob_h',async(req,res)=>{
+    try{
+        const result = await pool.query('select count(employee_id) from job_history');
+        res.json(result.rows);
+    }catch{
+           res.status(500).json({Error:err.message});
+    }
+});
+
 
 const PORT = process.env.PORT;
 app.listen(PORT,()=>{
